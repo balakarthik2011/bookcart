@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   resource :books, except: :show
-  get "users/:id", to: "user#show"
+  get "/users/:id", to: "user#show"
   get "/books", to: "books#index"
   get "/books/:id", to: "books#show"
   get "/my/books/", to: "books#my_books"
