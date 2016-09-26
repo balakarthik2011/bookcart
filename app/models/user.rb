@@ -14,4 +14,8 @@ class User < ApplicationRecord
     end
     false
   end
+
+  def to_s
+    email
+  end
 end
