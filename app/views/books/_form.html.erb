@@ -1,0 +1,40 @@
+<%= form_for(book, url: books_path) do |b| %>
+    <div class="panel panel-default ">
+      <div class="panel-heading">
+        <h2 class="panel-title"> New Book</h2>
+      </div>
+      <div class="panel-body">
+        <% if book.errors.any? %>
+            <div id="error_explanation" class="alert alert-danger">
+              <ul>
+                <% book.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <%= b.hidden_field :id %>
+
+        <div class="form-group">
+          <%= b.label :name %>
+          <%= b.text_field :name, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= b.label :author %>
+          <%= b.text_field :author, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= b.label :description %>
+          <%= b.text_area :description, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="actions form-group">
+          <%= b.submit "Submit", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    </div>
+
+<% end %>

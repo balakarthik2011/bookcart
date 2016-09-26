@@ -1,0 +1,35 @@
+<h1>Books</h1>
+<table>
+  <thead>
+  <th>Sl.no</th>
+  <th>Name</th>
+  <th>Author</th>
+  <th>Description</th>
+  <th>Favourite</th>
+  </thead>
+
+  <tbody>
+  <% row = 0%>
+  <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= row += 1%>
+        </td>
+        <td>
+          <%= book.name%>
+        </td>
+        <td>
+          <%= book.author%>
+        </td>
+        <td>
+          <%= book.description%>
+        </td>
+        <td>
+          <% fav = @fav_books.include?book%>
+          <% message = fav ? "Do you want to remove #{book.name} from your favourites list" : "Do you want to add #{book.name} to your favourites list"%>
+          <%= link_to (check_box_tag "favourite", !fav ,fav), make_favourite_path(book), data: {confirm: message} %>
+        </td>
+      </tr>
+  <%end%>
+  </tbody>
+</table>
