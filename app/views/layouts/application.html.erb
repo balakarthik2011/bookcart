@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookcart</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Bookcart</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <% if user_signed_in? %>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-  <%= link_to "Home", "/books" %>
-  <%= link_to "Your Books", my_books_path %>
-  <%= link_to "Favourites", favourites_path%>
-  <%= link_to "Forum", "/forum"%>
-  <%end%>
-    <%= yield %>
-  </body>
+<body>
+<% if user_signed_in? %>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-brand">Bookcart</div>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", "/books" %></li>
+          <li><%= link_to "Your Books", my_books_path %></li>
+          <li><%= link_to "Favourites", favourites_path %></li>
+          <li><%= link_to "Forum", "/forum" %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    </nav>
+<% end %>
+<%= yield %>
+</body>
 </html>

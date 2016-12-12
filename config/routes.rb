@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     root 'user/registrations#new'
     get '/', to: 'user/registrations#new'
   end
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'user/registrations'}
   resource :books, except: :show
   get "/users/:id", to: "user#show"
   get "/books", to: "books#index"

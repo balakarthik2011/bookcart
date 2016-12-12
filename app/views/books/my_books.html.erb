@@ -1,7 +1,7 @@
 <h1>My Books</h1>
 
 <%= link_to "Add New", new_books_path %>
-<table>
+<table class="table">
   <thead>
   <th>Sl.no</th>
   <th>Name</th>
@@ -27,8 +27,8 @@
           <%= book.description%>
         </td>
         <td>
-          <%= button_to "Edit", edit_books_path(book), method: :get%>
-          <%= button_to "Delete", books_path(book), method: :delete%>
+          <%= button_to "Edit", edit_books_path(book), method: :get, class: "btn btn-primary"%>
+          <%= button_to "Delete", books_path(book), method: :delete, class: "btn btn-danger"%>
         </td>
       </tr>
   <%end%>

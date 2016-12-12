@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :favorite_books
   has_many :fav_books, through: :favorite_books, source: "book"
 
+  validates_presence_of :name
+
   def admin
     if self.id == 1
       return true
